@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   PMNSTORE - TỔNG HỢP CSS TOÀN BỘ WEBSITE (XANH LÁ MIX XANH BIỂN)
+   ========================================================================== */
+
+:root {
+    --gradient-primary: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+    --gradient-accent: linear-gradient(90deg, #059669 0%, #0284c7 100%);
+    --gradient-hero: linear-gradient(135deg, #047857 0%, #0f172a 50%, #0369a1 100%);
+    --gradient-header: linear-gradient(135deg, #064e3b 0%, #0f172a 50%, #0369a1 100%);
+    --primary: #10b981;
+    --primary-hover: #059669;
+    --secondary: #06b6d4;
+    --accent: #f59e0b;
+    --success: #10b981;
+    --dark: #0f172a;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f0fdf4;
+    --white: #ffffff;
+    --shadow-card: 0 10px 25px -5px rgba(16, 185, 129, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 35px -5px rgba(6, 182, 212, 0.25);
+    --radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+}
+
+/* --- Header & Navigation --- */
+header, .header {
+    background: var(--gradient-header);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #34d399;
+    text-decoration: none;
+}
+
+    .logo img {
+        height: 42px;
+        width: auto;
+        object-fit: contain;
+    }
+
+.nav ul, .nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+}
+
+.nav a, .nav-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+    .nav a:hover, .nav a.active, .nav-link:hover, .nav-link.active {
+        color: var(--white);
+        background: var(--gradient-primary);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+/* --- Hero Banner --- */
+.hero-banner, .hero {
+    background: var(--gradient-hero);
+    color: var(--white);
+    text-align: center;
+    padding: 60px 20px;
+    border-radius: var(--radius);
+    margin-bottom: 35px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(4, 120, 87, 0.25);
+}
+
+    .hero-banner h1, .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+        background: linear-gradient(90deg, #6ee7b7, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-banner p, .hero p {
+        font-size: 1.15rem;
+        color: #cbd5e1;
+        max-width: 680px;
+        margin: 0 auto 20px auto;
+    }
+
+.section-title, .page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #065f46;
+}
+
+.content-box {
+    background: var(--white);
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 30px;
+}
+
+/* --- Grid & Cards --- */
+.grid-container, .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+}
+
+    .card:hover {
+        transform: translateY(-7px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--primary);
+    }
+
+/* --- XỬ LÝ ẢNH VỪA KHUNG (XÓA BỎ BỊ CẮT XÉN) --- */
+.card-img, .card-img-wrapper img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain; /* Co giãn vừa khung hình 100% */
+    padding: 15px;
+    background-color: #f8fafc;
+    transition: var(--transition);
+}
+
+.card:hover .card-img, .card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+    .card-body h3, .card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+    }
+
+    .card-body p, .card-text {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+        flex-grow: 1;
+    }
+
+/* --- Giá sản phẩm --- */
+.price, .price-tag, .price-amount {
+    font-size: 1.35rem;
+    color: #059669;
+    font-weight: 800;
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* --- Nút bấm (Gradient Xanh lá - Xanh biển) --- */
+.btn, .btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: var(--gradient-primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+
+    .btn:hover, .btn-submit:hover {
+        opacity: 0.95;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+    }
+
+.btn-secondary {
+    background: linear-gradient(135deg, #64748b, #475569);
+    box-shadow: none;
+}
+
+    .btn-secondary:hover {
+        background: linear-gradient(135deg, #475569, #334155);
+    }
+
+/* --- Gallery Grid --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    height: 230px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+}
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 12px;
+        transition: var(--transition);
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.08);
+    }
+
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(6, 78, 59, 0.9);
+    color: var(--white);
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* --- Product Detail Layout --- */
+.product-detail-container {
+    display: flex;
+    gap: 40px;
+    background: var(--white);
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    margin-top: 20px;
+    border: 1px solid #e2e8f0;
+}
+
+.detail-image {
+    flex: 1;
+    max-width: 450px;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f1f5f9;
+}
+
+    .detail-image img {
+        max-width: 100%;
+        max-height: 350px;
+        object-fit: contain;
+    }
+
+.detail-content {
+    flex: 1;
+}
+
+    .detail-content h1 {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+        color: #065f46;
+        font-weight: 800;
+    }
+
+.description {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.specs-list {
+    list-style: none;
+    margin-bottom: 25px;
+}
+
+    .specs-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 0.95rem;
+    }
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* --- Contact Section --- */
+.contact-wrapper, .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    background: var(--white);
+    padding: 35px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    border: 1px solid #e2e8f0;
+}
+
+.contact-info h2, .contact-form h2 {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    color: #065f46;
+    font-weight: 700;
+}
+
+.contact-info p {
+    margin-bottom: 14px;
+    color: var(--text-muted);
+}
+
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--text-dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-family: inherit;
+        transition: var(--transition);
+        outline: none;
+    }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+        }
+
+/* --- Footer --- */
+footer, .footer {
+    background: var(--gradient-header);
+    color: #cbd5e1;
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: auto;
+    font-size: 0.95rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .product-detail-container,
+    .contact-wrapper,
+    .contact-grid {
+        flex-direction: column;
+        grid-template-columns: 1fr;
+    }
+
+    .detail-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    header, .header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav ul, .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px 10px;
+    }
+
+    .hero-banner h1, .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+        .action-buttons .btn {
+            width: 100%;
+        }
+}

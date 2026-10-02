@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - PMNStore</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo.png" alt="PMNStore Logo">
+            <span>PMNStore</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="products.html">Sản phẩm</a></li>
+                <li><a href="services.html">Dịch vụ</a></li>
+                <li><a href="gallery.html">Bộ sưu tập</a></li>
+                <li><a href="blog.html">Tin tức</a></li>
+                <li><a href="details.html">Chi tiết</a></li>
+                <li><a href="contact.html" class="active">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-banner">
+        <h1>Liên Hệ Với PMNStore</h1>
+        <p>Chúng tôi sẵn sàng giải đáp mọi thắc mắc của bạn</p>
+    </section>
+
+    <main class="container">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Thông Tin Trụ Sở</h2>
+                <p><strong>Địa chỉ:</strong> 104 Nguyễn Văn Trỗi, Quận Phú Nhuận, TP. Hồ Chí Minh</p>
+                <p><strong>Điện thoại:</strong> 0357 830 907</p>
+                <p><strong>Email:</strong> PMNStore@gmail.com.vn</p>
+                <p><strong>Thời gian làm việc:</strong> 08:00 - 21:00 (Hàng ngày)</p>
+            </div>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Cảm ơn bạn đã gửi tin nhắn!');">
+                <h2>Gửi Tin Nhắn</h2>
+                <div class="form-group">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" required placeholder="Nhập họ và tên">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required placeholder="Nhập email liên hệ">
+                </div>
+                <div class="form-group">
+                    <label for="message">Nội dung:</label>
+                    <textarea id="message" rows="5" required placeholder="Cần PMNStore hỗ trợ gì thêm?"></textarea>
+                </div>
+                <button type="submit" class="btn">Gửi Liên Hệ</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 PMNStore. s</p>
+    </footer>
+</body>
+</html>

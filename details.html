@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Số Chi Tiết - PMNStore</title>
+    <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        .spec-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .spec-card:hover {
+            transform: translateY(-5px);
+            border-color: #10b981;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+        }
+        .spec-card img {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 8px;
+        }
+        .spec-badge {
+            background: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="images/logo.png" alt="PMNStore Logo">
+            <span>PMNStore</span>
+        </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="about.html">Giới thiệu</a></li>
+                <li><a href="products.html">Sản phẩm</a></li>
+                <li><a href="services.html">Dịch vụ</a></li>
+                <li><a href="gallery.html">Bộ sưu tập</a></li>
+                <li><a href="blog.html">Tin tức</a></li>
+                <li><a href="details.html" class="active">Chi tiết</a></li>
+                <li><a href="contact.html">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- VIEW 1: TRANG CHI TIẾT SẢN PHẨM CỤ THỂ (KHI CÓ ID) -->
+        <div class="product-detail-container" id="product-detail" style="display: none;">
+            <div class="detail-image">
+                <img id="p-img" src="" alt="Sản phẩm">
+            </div>
+            <div class="detail-content">
+                <h1 id="p-title"></h1>
+                <p class="price" id="p-price"></p>
+                <p class="description" id="p-desc"></p>
+                
+                <div style="background: #f0fdf4; padding: 15px; border-radius: 12px; border-left: 4px solid #10b981; margin-bottom: 20px;">
+                    <h4 style="color: #047857; margin-bottom: 5px;">🎁 Ưu đãi đặc biệt khi mua ngay:</h4>
+                    <span style="font-size: 0.9rem; color: #334155;">• Tặng gói bảo hành 24 tháng chính hãng <br> • Giảm 500.000 VNĐ khi thanh toán qua QRPay</span>
+                </div>
+
+                <h3>Thông số kỹ thuật chi tiết:</h3>
+                <ul class="specs-list" id="p-specs"></ul>
+
+                <div class="action-buttons">
+                    <a href="contact.html" class="btn">Đặt hàng ngay</a>
+                    <a href="details.html" class="btn btn-secondary">Quay lại trung tâm cấu hình</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 2: TRUNG TÂM TRA CỨU CẤU HÌNH (KHI CHƯA CHỌN ID) -->
+        <div id="catalog-view" style="display: none;">
+            <section class="hero-banner" style="margin-bottom: 30px;">
+                <h1>Trung Tâm Cấu Hình & Thông Số Kỹ Thuật</h1>
+                <p>Tra cứu nhanh chi tiết phần cứng, vi xử lý và công nghệ tích hợp của tất cả thiết bị</p>
+            </section>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;" id="specs-matrix">
+                <!-- Dữ liệu JS tự chèn các thẻ cấu hình nằm ngang ở đây -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 PMNStore. </p>
+    </footer>
+
+    <script>
+        const productsData = {
+            "iphone18": {
+                name: "iPhone 18 Pro",
+                price: "34.990.000 VNĐ",
+                image: "images/iphone.jpg",
+                chip: "Apple A20 Pro (3nm)",
+                screen: "6.3\" Super Retina XDR OLED 120Hz",
+                desc: "Thế hệ iPhone đột phá mới nhất với vi xử lý A20 Pro vượt trội, cụm camera nhiếp ảnh điện ảnh và khung vỏ Titanium siêu bền.",
+                specs: [
+                    "Màn hình: 6.3 inch Super Retina XDR OLED, 120Hz ProMotion",
+                    "Chip xử lý: Apple A20 Pro (Tiến trình 3nm)",
+                    "Bộ nhớ / RAM: 256GB / 8GB RAM",
+                    "Camera chính: 48 MP + 48 MP (Góc siêu rộng) + 48 MP (Tele 5x)",
+                    "Pin & Sạc: 4.200 mAh, Sạc nhanh 35W, MagSafe 25W",
+                    "Hệ điều hành: iOS 20"
+                ]
+            },
+            "macbook": {
+                name: "MacBook Pro 14\" M3",
+                price: "39.990.000 VNĐ",
+                image: "images/macbook.jpg",
+                chip: "Apple M3 (8-CPU / 10-GPU)",
+                screen: "14.2\" Liquid Retina XDR 120Hz",
+                desc: "Chiếc máy tính xách tay chuyên nghiệp mạnh mẽ hàng đầu cho lập trình viên, designer và nhà sáng tạo nội dung.",
+                specs: [
+                    "Màn hình: 14.2 inch Liquid Retina XDR, ProMotion 120Hz",
+                    "Vi xử lý: Apple M3 (8-core CPU, 10-core GPU)",
+                    "Bộ nhớ: 8GB RAM Unified Memory, 512GB SSD NVMe",
+                    "Trọng lượng: 1.55 kg",
+                    "Cổng kết nối: HDMI, SDXC, MagSafe 3, 2x Thunderbolt 4",
+                    "Thời lượng pin: Lên đến 22 giờ liên tục"
+                ]
+            },
+            "laptop": {
+                name: "Laptop Lenovo IdeaPad Slim 5",
+                price: "17.990.000 VNĐ",
+                image: "images/laptop.jpg",
+                chip: "AMD Ryzen 7 7730U",
+                screen: "14\" WUXGA IPS Anti-Glare",
+                desc: "Laptop văn phòng học tập mỏng nhẹ, hiệu năng ổn định cùng màn hình chống chói sắc nét.",
+                specs: [
+                    "Màn hình: 14 inch Full HD+ IPS (1920 x 1200), Anti-Glare",
+                    "CPU: AMD Ryzen 7 7730U (8 nhân 16 luồng, up to 4.5GHz)",
+                    "RAM & Ổ cứng: 16GB DDR5, 512GB SSD NVMe",
+                    "Đồ họa: AMD Radeon Graphics",
+                    "Trọng lượng: 1.46 kg",
+                    "Hệ điều hành: Windows 11 Home bản quyền"
+                ]
+            },
+            "tainghe": {
+                name: "Tai nghe Sony WF-1000XM5",
+                price: "5.490.000 VNĐ",
+                image: "images/tai nghe.jpg",
+                chip: "Processor V2 & QN2e",
+                screen: "Hi-Res Audio Wireless / LDAC",
+                desc: "Tai nghe True Wireless chống ồn đỉnh cao thế hệ mới từ Sony với âm thanh chuẩn Hi-Res Audio.",
+                specs: [
+                    "Kiểu dáng: True Wireless In-Ear chống ồn chủ động (ANC)",
+                    "Bộ xử lý âm thanh: Sony V2 & QN2e HD Noise Cancelling",
+                    "Thời lượng pin: 8 giờ (tai nghe) + 16 giờ (hộp sạc)",
+                    "Chuẩn kết nối: Bluetooth 5.3, hỗ trợ codec LDAC, AAC, SBC",
+                    "Chống nước: IPX4 (Kháng nước và mồ hôi)",
+                    "Tính năng: Đàm thoại lọc ồn AI, Speak-to-Chat"
+                ]
+            },
+            "dongho": {
+                name: "Apple Watch Series 10",
+                price: "10.990.000 VNĐ",
+                image: "images/dongho.jpg",
+                chip: "Apple S10 SiP",
+                screen: "LTPO3 OLED Always-On 2000 nits",
+                desc: "Đồng hồ thông minh theo dõi sức khỏe toàn diện với thiết kế mỏng hơn và màn hình Retina lớn nhất từ trước đến nay.",
+                specs: [
+                    "Kích thước: 42mm (Khung nhôm, dây đeo Sport Band)",
+                    "Màn hình: LTPO3 OLED Always-On Retina, độ sáng 2000 nits",
+                    "Chip xử lý: Apple S10 SiP",
+                    "Tính năng sức khỏe: Đo nhịp tim, Điện tâm đồ ECG, Đo oxy máu SpO2, Đo nhiệt độ",
+                    "Chống nước: WR50 (Chống nước 50m, hỗ trợ bơi lội)",
+                    "Thời lượng pin: 18 giờ (dùng thường), sạc nhanh 80% trong 30 phút"
+                ]
+            },
+            "maytinhbang": {
+                name: "iPad Air 6 M2 11\"",
+                price: "15.990.000 VNĐ",
+                image: "images/maytinhbang.jpg",
+                chip: "Apple M2 8-core",
+                screen: "11\" Liquid Retina TrueTone",
+                desc: "Máy tính bảng mỏng nhẹ, đa năng đột phá hiệu năng với con chip Apple M2 vượt trội.",
+                specs: [
+                    "Màn hình: 11 inch Liquid Retina, True Tone, dải màu P3",
+                    "Vi xử lý: Apple M2 (8-core CPU, 10-core GPU)",
+                    "Bộ nhớ: 8GB RAM / 128GB SSD",
+                    "Camera: Camera sau 12MP Wide, Camera trước 12MP Ultra Wide Center Stage",
+                    "Hỗ trợ phụ kiện: Apple Pencil Pro, Magic Keyboard",
+                    "Thời lượng pin: Lên đến 10 giờ lướt web Wi-Fi"
+                ]
+            }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        if (productId && productsData[productId]) {
+            // CÓ ID -> HIỂN THỊ CHI TIẾT
+            const item = productsData[productId];
+            document.getElementById('product-detail').style.display = 'flex';
+            document.getElementById('catalog-view').style.display = 'none';
+
+            document.getElementById('p-img').src = item.image;
+            document.getElementById('p-title').textContent = item.name;
+            document.getElementById('p-price').textContent = item.price;
+            document.getElementById('p-desc').textContent = item.desc;
+            document.getElementById('p-specs').innerHTML = item.specs.map(s => `<li><strong>•</strong> ${s}</li>`).join('');
+        } else {
+            // KHÔNG CÓ ID -> HIỂN THỊ BẢNG TRA CỨU CẤU HÌNH NHANH (Bảng ngang sắc nét)
+            document.getElementById('product-detail').style.display = 'none';
+            document.getElementById('catalog-view').style.display = 'block';
+
+            const matrixContainer = document.getElementById('specs-matrix');
+            matrixContainer.innerHTML = Object.keys(productsData).map(key => {
+                const item = productsData[key];
+                return `
+                    <div class="spec-card">
+                        <img src="${item.image}" alt="${item.name}">
+                        <div style="flex: 1;">
+                            <span class="spec-badge">${item.chip}</span>
+                            <h3 style="font-size: 1.1rem; margin-bottom: 4px; color: #0f172a;">${item.name}</h3>
+                            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 8px;">📺 ${item.screen}</p>
+                            <p style="font-weight: 800; color: #10b981; font-size: 1.05rem; margin-bottom: 10px;">${item.price}</p>
+                            <a href="details.html?id=${key}" class="btn" style="padding: 6px 14px; font-size: 0.85rem;">Xem thông số chi tiết →</a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    </script>
+</body>
+</html>
