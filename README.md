@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/32981131/README.md)
 # Bài Tập Website Tĩnh - PMNStore
 
 ## Thông Tin Sinh Viên
